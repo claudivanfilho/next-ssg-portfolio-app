@@ -6,11 +6,12 @@ import {
   LineElement,
   PointElement,
   Title,
+  Filler,
   RadialLinearScale,
   RadarController,
 } from "chart.js";
 
-ChartJS.register(RadarController, LineElement, PointElement, RadialLinearScale, Title);
+ChartJS.register(RadarController, RadialLinearScale, LineElement, Filler, PointElement, Title);
 
 import { Pokemon } from "@/models";
 
