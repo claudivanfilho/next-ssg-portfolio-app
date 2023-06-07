@@ -1,11 +1,10 @@
-import { LANGS } from "@/config/constants";
+import { useTranslations } from "next-intl";
+
 import BackButton from "./BackButton";
+import LangSelector from "./LangSelector";
 
 const Header = () => {
-  // TODO Fix locale
-  // const { locale, setLocale } = useLocale();
-  // const { formatMessage } = useIntl();
-
+  const t = useTranslations();
   return (
     <div className="fixed top-0 z-10 w-full py-3 text-white bg-purple-700">
       <div className="flex justify-between max-w-screen-xl px-5 mx-auto 2xl:px-0">
@@ -13,19 +12,7 @@ const Header = () => {
           <span className="hidden md:block">PokeSearch</span>
           <span className="block md:hidden">PSearch</span>
         </h1>
-        <select
-          data-testid="lang-select"
-          aria-label="Select a language"
-          className="px-2 bg-transparent cursor-pointer"
-          // value={locale}
-          // onChange={(val) => setLocale(val.target.value)}
-        >
-          {LANGS.map((l) => (
-            <option key={l} value={l}>
-              {l.toUpperCase()}
-            </option>
-          ))}
-        </select>
+        <LangSelector />
         <BackButton />
       </div>
     </div>
