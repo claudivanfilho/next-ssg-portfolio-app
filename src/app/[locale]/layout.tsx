@@ -33,7 +33,6 @@ export default async function RootLayout({
   }
 
   if (params.locale !== locale) {
-    console.log(locale);
     notFound();
   }
 

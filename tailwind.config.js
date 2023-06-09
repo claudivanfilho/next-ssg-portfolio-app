@@ -22,5 +22,4 @@ module.exports = {
       display: ["group-hover"],
     },
   },
-  plugins: [],
 };
