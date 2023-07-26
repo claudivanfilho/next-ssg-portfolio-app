@@ -1,7 +1,8 @@
 import { GenerationResponse } from "@/models/index";
+import { useTranslations } from "next-intl";
 
 const GenerationDetails = ({ generation }: { generation: GenerationResponse }) => {
-  // TODO intl
+  const t = useTranslations();
 
   return (
     <div className="flex flex-col pr-2">
@@ -10,11 +11,11 @@ const GenerationDetails = ({ generation }: { generation: GenerationResponse }) =
       </h2>
       <div className="flex flex-col justify-between text-xl font-bold text-gray-500 lg:flex-row">
         <h3 className="flex gap-2">
-          <span>Region:</span>
+          <span>{t("region")}:</span>
           <span>{generation.main_region.name}</span>
         </h3>
         <h3>
-          <span>Pokemons: {generation.pokemon_species.length}</span>
+          <span>{t("pokemons_count", { count: generation.pokemon_species.length })}</span>
         </h3>
       </div>
     </div>

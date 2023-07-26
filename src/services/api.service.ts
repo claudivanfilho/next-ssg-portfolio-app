@@ -1,4 +1,4 @@
-import { API_URL, GENERATION_API_URL } from "@/config/constants";
+import { API_URL, DEFAULT_LANG, GENERATION_API_URL } from "@/config/constants";
 import {
   EvolutionChainResponse,
   GenerationResponse,
@@ -7,9 +7,9 @@ import {
   PokemonSpecieResponse,
   Resource,
 } from "../models";
-import { normalizePokemon } from "./dto.service";
+import { normalizeGeneration, normalizePokemon } from "./dto.service";
 
-export async function fetchGenerations(): Promise<GenerationResponse[]> {
+export async function fetchGenerations(locale = DEFAULT_LANG): Promise<GenerationResponse[]> {
   return fetch(GENERATION_API_URL)
     .then((res) => {
       if (!res.ok) {
@@ -19,16 +19,25 @@ export async function fetchGenerations(): Promise<GenerationResponse[]> {
     })
     .then(async ({ results }: { results: Resource[] }) => {
       return Promise.all(
-        results.map((generation) => fetch(generation.url).then((res) => res.json()))
+        results.map((generation) =>
+          fetch(generation.url)
+            .then((res) => res.json())
+            .then((res) => normalizeGeneration(res, locale))
+        )
       );
     });
 }
 
-export async function fetchGeneration(id: string): Promise<GenerationResponse> {
-  return fetch(`${API_URL}/generation/${id}`).then((res) => res.json());
+export async function fetchGeneration(
+  id: string,
+  locale = DEFAULT_LANG
+): Promise<GenerationResponse> {
+  return fetch(`${API_URL}/generation/${id}`)
+    .then((res) => res.json())
+    .then((res) => normalizeGeneration(res, locale));
 }
 
-export async function fetchPokemon(name: string): Promise<Pokemon> {
+export async function fetchPokemon(name: string, locale = DEFAULT_LANG): Promise<Pokemon> {
   const pokemonRes: PokemonResponse = await fetch(`${API_URL}/pokemon/${name}`).then((res) =>
     res.json()
   );
@@ -50,11 +59,5 @@ export async function fetchPokemon(name: string): Promise<Pokemon> {
       );
     });
 
-  return normalizePokemon(
-    pokemonRes,
-    pokemonSpecieRes,
-    evolutions,
-    // TODO fix intl
-    "en"
-  );
+  return normalizePokemon(pokemonRes, pokemonSpecieRes, evolutions, locale);
 }

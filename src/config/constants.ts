@@ -12,6 +12,6 @@ export const SWR_OPTIONS = {
   fetcher: (url: string) => fetch(url).then((res) => res.json()),
 };
 
-export const LANGS = ["en", "es", "pt", "ko", "ja", "fr", "de"];
+export const LANGS = ["en", "es", "ko", "ja", "fr", "de"];
 
 export const DEFAULT_LANG = "en";

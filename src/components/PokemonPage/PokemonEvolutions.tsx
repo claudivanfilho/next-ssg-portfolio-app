@@ -1,11 +1,9 @@
 import { Pokemon } from "@/models";
-import PokemonEvolutionsLoader from "./loaders/PokemonEvolutionsLoader";
 import PokemonEvolutionCard from "./PokemonEvolutionCard";
+import ChevronRightIcon from "../ChevronRightIcon";
 
 const PokemonEvolutions = ({ pokemon }: { pokemon?: Pokemon | null }) => {
   const evolutions = pokemon?.evolutions;
-
-  if (!evolutions) return <PokemonEvolutionsLoader />;
 
   return (
     <div
@@ -13,9 +11,9 @@ const PokemonEvolutions = ({ pokemon }: { pokemon?: Pokemon | null }) => {
       data-testid="pokemon-evolution-stages"
     >
       {evolutions?.[0] && <PokemonEvolutionCard stage={evolutions?.[0]} className="w-1/4" />}
-      {evolutions?.[1] && ">"}
+      {evolutions?.[1] && <ChevronRightIcon />}
       {evolutions?.[1] && <PokemonEvolutionCard stage={evolutions?.[1]} className="w-1/4" />}
-      {evolutions?.[2] && ">"}
+      {evolutions?.[2] && <ChevronRightIcon />}
       {evolutions?.[2] && <PokemonEvolutionCard stage={evolutions?.[2]} className="w-1/4" />}
     </div>
   );

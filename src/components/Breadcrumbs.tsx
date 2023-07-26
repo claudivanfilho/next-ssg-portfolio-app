@@ -1,31 +1,38 @@
-"use client";
-
-import { GenerationResponse } from "@/models";
+import { GenerationResponse, Pokemon } from "@/models";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 
-const Breadcrumbs = ({ generations }: { generations: GenerationResponse[] }) => {
-  const { generationId, pokemonName } = useParams();
-  const generation = generations.find((g) => String(g.id) === generationId);
+const Breadcrumbs = ({
+  generation,
+  pokemon,
+}: {
+  generation: GenerationResponse;
+  pokemon?: Pokemon;
+}) => {
+  const locale = useLocale();
+  const t = useTranslations();
+  const renderBreadcrumbLink = (label: string, uri: string) => (
+    <Link
+      href={uri}
+      locale={locale}
+      className="flex w-full text-purple-700 lg:w-40 hover:underline"
+    >
+      {label}
+    </Link>
+  );
 
-  const renderTerm = (clickable: boolean, path: string, text: string = "") =>
-    clickable ? (
-      <Link href={path} className="flex w-full text-purple-700 lg:w-40 hover:underline">
-        {text}
-      </Link>
-    ) : (
-      text
-    );
-
-  // TODO fix generation and pokemon name intl
   return (
     <nav className="container block lg:hidden">
       <ol className="flex gap-2 py-4 pl-4 text-gray-700 list-reset bg-grey-light">
-        <li>{renderTerm(true, "/", "Gerações")}</li>
+        <li>{renderBreadcrumbLink(t("generations"), "/")}</li>
         <li>/</li>
-        <li>{renderTerm(!!pokemonName, `/generation/${generationId}`, generation?.name!)}</li>
-        {pokemonName && <li>/</li>}
-        {pokemonName && <li>{pokemonName}</li>}
+        <li>
+          {!!pokemon
+            ? renderBreadcrumbLink(generation.nameTranslated!, `/generation/${generation.id}`)
+            : generation.nameTranslated}
+        </li>
+        {pokemon && <li>/</li>}
+        {pokemon && <li>{pokemon.nameTranslated}</li>}
       </ol>
     </nav>
   );

@@ -4,8 +4,8 @@ import GenerationListingItem from "./GenerationListingItem";
 const GenerationListing = ({ generations }: { generations: GenerationResponse[] }) => {
   return (
     <div className="flex flex-col">
-      {generations.map(({ id, name }) => (
-        <GenerationListingItem key={id} id={id} name={name} />
+      {generations.map(({ id, nameTranslated }) => (
+        <GenerationListingItem key={id} id={id} name={nameTranslated!} />
       ))}
     </div>
   );

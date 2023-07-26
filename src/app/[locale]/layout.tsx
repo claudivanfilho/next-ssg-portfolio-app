@@ -1,15 +1,7 @@
-import Header from "@/components/Header";
 import "./globals.css";
-import { Inter } from "next/font/google";
-import Footer from "@/components/Footer";
-import { fetchGenerations } from "@/services/api.service";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import GenerationListing from "@/components/GenerationsPage/GenerationListing";
-import GenerationsPageWrapper from "@/components/GenerationsPage/GenerationsPageWrapper";
-import { notFound } from "next/navigation";
-import { NextIntlClientProvider, useLocale } from "next-intl";
 
-const inter = Inter({ subsets: ["latin"] });
+import { notFound } from "next/navigation";
+import { NextIntlClientProvider } from "next-intl";
 
 export const metadata = {
   title: "Create Next App",
@@ -18,12 +10,11 @@ export const metadata = {
 
 export default async function RootLayout({
   children,
-  params,
+  params: { locale },
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: { locale: string; generationId: string; pokemonName: string };
 }) {
-  const locale = useLocale();
   let messages;
 
   try {
@@ -32,28 +23,11 @@ export default async function RootLayout({
     notFound();
   }
 
-  if (params.locale !== locale) {
-    notFound();
-  }
-
-  const generations = await fetchGenerations();
-
   return (
     <html lang={locale}>
       <body className="h-screen pt-14">
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Header />
-          <Breadcrumbs generations={generations} />
-          <main className="overflow-y-auto" style={{ height: "calc(100vh - 135px)" }}>
-            <div className="grid-cols-12 px-5 m-auto max-w-screen-2xl lg:grid lg:mt-8 lg:divide-x-2 lg:divide-solid lg:gap-x-5 2xl:gap-x-10 2xl:px-0">
-              <GenerationsPageWrapper>
-                <h3 className="mb-3 text-3xl font-bold text-gray-700">Generations</h3>
-                <GenerationListing generations={generations} />
-              </GenerationsPageWrapper>
-              {children}
-            </div>
-          </main>
-          <Footer />
+          {children}
         </NextIntlClientProvider>
       </body>
     </html>
