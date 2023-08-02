@@ -15,9 +15,6 @@ const nextConfig = withNextIntl({
       },
     ],
   },
-  experimental: {
-    scrollRestoration: true,
-  },
 });
 
 module.exports = nextConfig;

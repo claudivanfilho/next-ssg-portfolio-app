@@ -7,25 +7,21 @@
 describe("Use cases of the Header", () => {
   it("when back button is clicked should return to the previous page", () => {
     // Start from the index page
-    cy.visit("http://localhost:3000/");
+    cy.visit(Cypress.config().baseUrl);
 
     cy.get("h1").contains("PokeSearch");
 
     cy.get("a").contains("Generation I").click();
 
-    cy.location().should((loc) => {
-      expect(loc.pathname).to.eq("/generation/1");
-    });
+    cy.url().should("be.equal", `${Cypress.config().baseUrl}/generation/1`);
 
     cy.get("button").contains("Back").click();
 
-    cy.location().should((loc) => {
-      expect(loc.pathname).to.eq("/");
-    });
+    cy.url().should("be.equal", `${Cypress.config().baseUrl}/`);
   });
 
   it("when changed the lang selector should change the language of the page", () => {
-    cy.visit("http://localhost:3000/");
+    cy.visit(Cypress.config().baseUrl);
 
     cy.get("[data-testid=lang-select]").select("fr");
 

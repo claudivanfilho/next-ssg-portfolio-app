@@ -4,8 +4,9 @@ import { TextField } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
+import { usePreserveScroll } from "@/hooks/usePreserveScroll";
 import { Resource } from "@/models/index";
 
 import PokemonListingItem from "./PokemonListingItem";
@@ -14,25 +15,14 @@ const SCROLL_STORAGE_KEY_PREFIX = "pokemon-listing-scroll-generation-";
 
 const PokemonListing = ({ pokemons }: { pokemons: Resource[] }) => {
   const params = useParams();
+  const t = useTranslations();
   const [searchText, setSearchText] = useState("");
   const filteredPokemons = pokemons.filter((p) => p.name.includes(searchText));
-  const t = useTranslations();
 
-  useEffect(() => {
-    const storageKey = `${SCROLL_STORAGE_KEY_PREFIX}${params.generationId}`;
-
-    const scrollPosotion = window.localStorage.getItem(storageKey) || "0";
-    document.getElementById("pokemon-listing-scroll")!.scrollTop = +scrollPosotion;
-
-    const handle = (e: any) => {
-      window.localStorage.setItem(storageKey, e.target.scrollTop);
-    };
-
-    document.getElementById("pokemon-listing-scroll")?.addEventListener("scroll", handle);
-
-    return () =>
-      document.getElementById("pokemon-listing-scroll")?.removeEventListener("scroll", handle);
-  }, []);
+  usePreserveScroll(
+    "#pokemon-listing-scroll",
+    `${SCROLL_STORAGE_KEY_PREFIX}${params.generationId}`
+  );
 
   return (
     <div className="flex flex-col" data-testid="pokemon-listing">
