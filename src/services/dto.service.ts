@@ -1,11 +1,5 @@
-import {
-  EvolutionChainResponse,
-  PokemonResponse,
-  PokemonSpecieResponse,
-  Resource,
-} from "../models/index";
 import { DEFAULT_LANG } from "../config/constants";
-import { GenerationResponse, Pokemon } from "../models";
+import { GenerationResponse, Pokemon, PokemonResponse, PokemonSpecieResponse } from "../models";
 
 export function normalizeGeneration(
   generation: GenerationResponse,

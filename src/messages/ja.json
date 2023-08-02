@@ -11,5 +11,9 @@
   "stats": "統計",
   "created-by": "によって作成された Claudivan",
   "back-btn": "戻る",
-  "search-placeholder": "ポケモンを検索"
+  "search-placeholder": "ポケモンを検索",
+  "go-home-btn": "家に帰れ",
+  "page-not-found": "ページが見つかりません",
+  "pokemon-not-found": "ポケモンが見つかりません",
+  "generation-not-found": "世代が見つかりません"
 }

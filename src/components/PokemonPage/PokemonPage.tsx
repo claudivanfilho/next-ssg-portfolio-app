@@ -1,8 +1,10 @@
 import React from "react";
+
 import { Pokemon } from "@/models";
-import PokemonHeader from "./PokemonHeader";
+
 import Translate from "../Translate";
 import PokemonEvolutions from "./PokemonEvolutions";
+import PokemonHeader from "./PokemonHeader";
 import PokemonStats from "./PokemonStats";
 
 export default function PokemonPage({ pokemon }: { pokemon: Pokemon }) {

@@ -1,6 +1,8 @@
-import React from "react";
-import { GenerationResponse } from "@/models";
 import { useTranslations } from "next-intl";
+import React from "react";
+
+import { GenerationResponse } from "@/models";
+
 import GenerationListing from "./GenerationListing";
 
 export default function GenerationsPage({

@@ -1,5 +1,6 @@
-import { GenerationResponse } from "@/models/index";
 import { useTranslations } from "next-intl";
+
+import { GenerationResponse } from "@/models/index";
 
 const GenerationDetails = ({ generation }: { generation: GenerationResponse }) => {
   const t = useTranslations();

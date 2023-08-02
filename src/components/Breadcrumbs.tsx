@@ -1,6 +1,7 @@
-import { GenerationResponse, Pokemon } from "@/models";
-import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+
+import { GenerationResponse, Pokemon } from "@/models";
 
 const Breadcrumbs = ({
   generation,

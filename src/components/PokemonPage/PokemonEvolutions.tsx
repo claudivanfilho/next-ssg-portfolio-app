@@ -1,6 +1,7 @@
 import { Pokemon } from "@/models";
-import PokemonEvolutionCard from "./PokemonEvolutionCard";
+
 import ChevronRightIcon from "../ChevronRightIcon";
+import PokemonEvolutionCard from "./PokemonEvolutionCard";
 
 const PokemonEvolutions = ({ pokemon }: { pokemon?: Pokemon | null }) => {
   const evolutions = pokemon?.evolutions;

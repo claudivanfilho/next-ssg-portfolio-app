@@ -1,6 +1,6 @@
 import App from "@/components/App";
-import { fetchGenerations, fetchPokemon } from "@/services/api.service";
-import React from "react";
+import ErrorPage from "@/components/ErrorPage";
+import { fetchGeneration, fetchGenerations, fetchPokemon } from "@/services/api.service";
 
 export default async function page({
   params: { generationId, pokemonName, locale },
@@ -11,9 +11,13 @@ export default async function page({
     locale: string;
   };
 }) {
-  const generations = await fetchGenerations(locale);
-  const generation = generations.find((gen) => gen.id === +generationId);
-  const pokemon = await fetchPokemon(pokemonName, locale);
+  try {
+    const generations = await fetchGenerations(locale);
+    const generation = await fetchGeneration(generationId);
+    const pokemon = await fetchPokemon(pokemonName, locale);
 
-  return <App generations={generations} generation={generation} pokemon={pokemon} />;
+    return <App generations={generations} generation={generation} pokemon={pokemon} />;
+  } catch (error) {
+    return <ErrorPage message={(error as Error).message} />;
+  }
 }

@@ -1,4 +1,5 @@
 import { GenerationResponse } from "@/models";
+
 import GenerationDetails from "./GenerationDetails";
 import PokemonListing from "./PokemonListing";
 

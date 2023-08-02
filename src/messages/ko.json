@@ -11,5 +11,9 @@
   "stats": "통계",
   "created-by": "만든 사람 Claudivan",
   "back-btn": "뒤로",
-  "search-placeholder": "포켓몬 검색"
+  "search-placeholder": "포켓몬 검색",
+  "go-home-btn": "집에가",
+  "page-not-found": "문서를 찾을 수 없음",
+  "pokemon-not-found": "포켓몬을 찾을 수 없음",
+  "generation-not-found": "세대를 찾을 수 없음"
 }

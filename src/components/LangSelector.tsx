@@ -1,13 +1,11 @@
 "use client";
 
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
-import { useLocale } from "next-intl";
 
 import { LANGS } from "@/config/constants";
-import { usePathname, useRouter } from "next/navigation";
 
 export default function LangSelector(props: any) {
-  const locale = useLocale();
   const router = useRouter();
   const pathName = usePathname();
 
@@ -15,7 +13,7 @@ export default function LangSelector(props: any) {
     <select
       data-testid="lang-select"
       className="px-2 bg-transparent"
-      value={locale}
+      value={props.locale}
       onChange={(val) => {
         if (pathName.match(/\/([a-zA-Z]{2})\/?$/)) {
           router.push(`/${val.target.value}/${pathName.substring(4)}/`);

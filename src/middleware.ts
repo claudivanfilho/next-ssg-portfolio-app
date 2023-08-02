@@ -1,4 +1,5 @@
 import createMiddleware from "next-intl/middleware";
+
 import { DEFAULT_LANG, LANGS } from "./config/constants";
 
 export default createMiddleware({

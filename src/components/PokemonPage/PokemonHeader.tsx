@@ -1,4 +1,5 @@
 import { Pokemon } from "@/models";
+
 import PokemonAnimatedBG from "./PokemonAnimatedBG";
 import PokemonPicture from "./PokemonPicture";
 

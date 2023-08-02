@@ -1,5 +1,6 @@
 import App from "@/components/App";
-import { fetchGenerations } from "@/services/api.service";
+import ErrorPage from "@/components/ErrorPage";
+import { fetchGeneration, fetchGenerations } from "@/services/api.service";
 
 export default async function page({
   params: { generationId, locale },
@@ -9,8 +10,12 @@ export default async function page({
     locale: string;
   };
 }) {
-  const generations = await fetchGenerations(locale);
-  const generation = generations.find((gen) => gen.id === +generationId);
+  try {
+    const generations = await fetchGenerations(locale);
+    const generation = await fetchGeneration(generationId);
 
-  return <App generations={generations} generation={generation} />;
+    return <App generations={generations} generation={generation} />;
+  } catch (error) {
+    return <ErrorPage message={(error as Error).message} />;
+  }
 }

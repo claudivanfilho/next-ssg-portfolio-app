@@ -1,5 +1,6 @@
-import { PokemonResponse } from "@/models";
 import Image from "next/image";
+
+import { PokemonResponse } from "@/models";
 
 export default function PokemonPicture({
   pokemon,

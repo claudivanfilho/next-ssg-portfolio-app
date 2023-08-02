@@ -1,4 +1,5 @@
 import { GenerationResponse } from "@/models/index";
+
 import GenerationListingItem from "./GenerationListingItem";
 
 const GenerationListing = ({ generations }: { generations: GenerationResponse[] }) => {

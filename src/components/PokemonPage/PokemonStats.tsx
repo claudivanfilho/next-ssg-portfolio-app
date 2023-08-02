@@ -1,19 +1,19 @@
 "use client";
 
-import { Chart } from "react-chartjs-2";
 import {
   Chart as ChartJS,
+  Filler,
   LineElement,
   PointElement,
-  Title,
-  Filler,
-  RadialLinearScale,
   RadarController,
+  RadialLinearScale,
+  Title,
 } from "chart.js";
-
-ChartJS.register(RadarController, RadialLinearScale, LineElement, Filler, PointElement, Title);
+import { Chart } from "react-chartjs-2";
 
 import { Pokemon } from "@/models";
+
+ChartJS.register(RadarController, RadialLinearScale, LineElement, Filler, PointElement, Title);
 
 const PokemonStats = ({ pokemon }: { pokemon: Pokemon }) => {
   const labels = pokemon.stats.map((stat) => stat.stat.name.replace("special", "sp")) || [];

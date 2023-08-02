@@ -11,5 +11,9 @@
   "stats": "statistiques",
   "created-by": "Créé par Claudivan",
   "back-btn": "Retour",
-  "search-placeholder": "Rechercher un pokémon"
+  "search-placeholder": "Rechercher un pokémon",
+  "go-home-btn": "rentrer chez soi",
+  "page-not-found": "Page introuvable",
+  "pokemon-not-found": "Pokémon introuvable",
+  "generation-not-found": "Génération introuvable"
 }

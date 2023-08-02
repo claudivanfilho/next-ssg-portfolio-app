@@ -1,11 +1,11 @@
-import React from "react";
-import GenerationsPage from "./GenerationsPage/GenerationsPage";
-import Header from "./Header";
+import { GenerationResponse, Pokemon } from "@/models";
+
 import Breadcrumbs from "./Breadcrumbs";
 import Footer from "./Footer";
 import GenerationPage from "./GenerationPage/GenerationPage";
+import GenerationsPage from "./GenerationsPage/GenerationsPage";
+import Header from "./Header";
 import PokemonPage from "./PokemonPage/PokemonPage";
-import { GenerationResponse, Pokemon } from "@/models";
 
 export default function App({
   generations,
@@ -19,6 +19,7 @@ export default function App({
   return (
     <>
       <Header />
+      <div className="pt-14" />
       {generation && <Breadcrumbs generation={generation} pokemon={pokemon} />}
       <main className="overflow-y-auto" style={{ height: "calc(100vh - 135px)" }}>
         <div className="grid-cols-12 px-5 m-auto max-w-screen-2xl lg:grid lg:mt-8 lg:divide-x-2 lg:divide-solid lg:gap-x-5 2xl:gap-x-10 2xl:px-0">
