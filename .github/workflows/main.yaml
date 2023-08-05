@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: "18"
       - name: Install dependencies
-        run: npm install --save-dev @percy/cli
+        run: npm install
       - name: Cypress run
         run: "npm run test:ci"
         env:
