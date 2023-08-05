@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test:ci": "start-server-and-test dev http://localhost:3000 percy:cypress",
     "percy:cypress": "percy exec -- npm run e2e:headless",
     "cypress": "cypress open",
     "e2e": "start-server-and-test dev http://localhost:3000 \"cypress open --e2e\"",
