@@ -3,6 +3,7 @@ describe("Use cases of the initial page (Generations Page)", () => {
     cy.visit(Cypress.config().baseUrl);
 
     cy.get("a").contains("Generation I");
+    cy.percySnapshot();
   });
 
   it("when tried to access an invalid route should display an error message", () => {

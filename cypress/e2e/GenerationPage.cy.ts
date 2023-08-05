@@ -5,13 +5,15 @@ describe("Use cases of the Generation Page", () => {
     cy.contains("Pokemons: 151");
   });
 
-  it("when clicked in a pokemon in the listing should redirec to pokemon page", () => {
+  it("when clicked in a pokemon in the listing should redirect to pokemon page", () => {
     cy.visit(`${Cypress.config().baseUrl}/generation/1`);
+    cy.get("[data-testid=pokemon-details-section]").should("not.exist");
+
     cy.get("[data-testid=pokemon-listing]").within(() => {
       cy.get("a").contains("bulbasaur").click();
     });
 
-    cy.get("[data-testid=pokemon-details-section]").should("not.exist");
+    cy.get("[data-testid=pokemon-details-section]").should("exist");
 
     cy.url().should("be.equal", `${Cypress.config().baseUrl}/generation/1/pokemon/bulbasaur`);
   });
