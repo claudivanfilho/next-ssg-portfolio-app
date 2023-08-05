@@ -16,10 +16,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "18"
-      - name: Install dependencies
-        run: npm install
-      - name: Cypress run
-        run: "npm run test:ci"
+      - run: npm install
+      - run: "npm run test:ci"
         env:
           # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
           # in GitHub repo → Settings → Secrets → Actions
