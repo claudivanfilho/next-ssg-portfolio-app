@@ -1,8 +1,7 @@
 describe("Use cases of the Generation Page", () => {
   it("when initiated the generation page should display the page info", () => {
     cy.visit(`${Cypress.config().baseUrl}/generation/1`);
-    cy.contains("Region");
-    cy.contains("Pokemons: 151");
+    cy.percySnapshot();
   });
 
   it("when clicked in a pokemon in the listing should redirect to pokemon page", () => {
