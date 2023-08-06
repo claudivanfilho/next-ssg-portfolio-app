@@ -1,16 +1,7 @@
 describe("Use cases of the Pokemon Page", () => {
   it("when initiated the Pokemon Page should display the pokemon info", () => {
     cy.visit(`${Cypress.config().baseUrl}/generation/1/pokemon/bulbasaur`);
-
-    cy.get("[data-testid=pokemon-header]").within(() => {
-      cy.get("[alt=bulbasaur]").should("exist");
-    });
-
-    cy.get("[data-testid=pokemon-details-section]").within(() => {
-      cy.get("[data-testid=pokemon-evolution-stages]").should("exist");
-      cy.get("[data-testid=pokemon-stats]").should("exist");
-      cy.get("[data-testid=pokemon-header]").should("exist");
-    });
+    cy.percySnapshot();
   });
 
   it("when initiated the Pokemon Page with error should display the error message", () => {
