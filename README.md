@@ -1,4 +1,5 @@
 ![cypress workflow](https://github.com/claudivanfilho/next-server-rendering-app/actions/workflows/main.yaml/badge.svg)
+![playwright workflow](https://github.com/claudivanfilho/next-server-rendering-app/actions/workflows/playwright.yaml/badge.svg)
 
 ## Next 13 Sample App
 
@@ -10,10 +11,12 @@ Technologies and concepts used in this project:
 - New app directory feature enabled
 - i18n with next-intl (route based intl)
 - Cypress tests
+- Playwright test example
 - Visual testing with [percy.io](https://percy.io/)
 - Github Actions
   - Continuous integration configured (cypress cloud + percy + parallelization)
   - Branch preview with vercel configured
+  - Playwright workflow
 - Preserve scroll implemented in the main listing
 
 ## Getting Started
