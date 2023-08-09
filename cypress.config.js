@@ -12,4 +12,5 @@ export default defineConfig({
       bundler: "webpack",
     },
   },
+  retries: 2,
 });
